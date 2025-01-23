@@ -10,11 +10,18 @@ app.use(cookieParser());
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
+// CORS Configuration
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:5173", // Allow requests from your frontend origin
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed HTTP methods
+    credentials: true, // Allow cookies and authentication headers
+    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
   })
 );
+
+// Handle Preflight Requests
+app.options("*", cors());
 
 // Test Route
 app.get("/", (req, res) => {
