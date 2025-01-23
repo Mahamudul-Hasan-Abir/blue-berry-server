@@ -25,7 +25,7 @@ app.options("*", cors());
 
 // Test Route
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello ! Welcome to Blue Berry Server");
 });
 
 // API Routes
